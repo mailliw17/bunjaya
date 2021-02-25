@@ -11,4 +11,9 @@ class M_dashboard extends CI_Model
     {
         return $this->db->query("SELECT * FROM barang");
     }
+
+    public function countTransaksi()
+    {
+        return $this->db->query("SELECT * FROM transaksi");
+    }
 }

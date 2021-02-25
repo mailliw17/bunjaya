@@ -30,13 +30,36 @@
             </div>
         </div>
     </div>
+
+    <?php if ($this->session->flashdata('success')) { ?>
+        <div class="alert alert-success" role="alert">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <?php echo $this->session->flashdata('success'); ?>
+        </div>
+    <?php } else if ($this->session->flashdata('error')) { ?>
+        <div class="alert alert-danger">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Error!</strong> <?php echo $this->session->flashdata('error'); ?>
+        </div>
+    <?php } else if ($this->session->flashdata('warning')) { ?>
+        <div class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Warning!</strong> <?php echo $this->session->flashdata('warning'); ?>
+        </div>
+    <?php } else if ($this->session->flashdata('info')) { ?>
+        <div class="alert alert-info">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Info!</strong> <?php echo $this->session->flashdata('info'); ?>
+        </div>
+    <?php } ?>
+
     <form action="<?= base_url() ?>datamining/prosesapriori" method="post" class="form-group col-md-4">
 
         <div class="form-group row">
             <div class="col-md-12">
                 <i class="fas fa-calendar-week"></i>
                 <label for="nama">Rentang Tanggal</label>
-                <input type="text" class="form-control" id="daterange" placeholder="24/02/2021 - 25/02/2021" name="datefilter" autocomplete="off" required>
+                <input type="text" class="form-control" id="range_tanggal" placeholder="24/02/2021 - 25/02/2021" name="range_tanggal" autocomplete="off" required>
             </div>
         </div>
 

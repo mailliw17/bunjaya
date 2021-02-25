@@ -34,14 +34,14 @@
                         ?>
                             <tr>
                                 <td> <?php echo $no; ?> </td>
-                                <td> <?php echo date("d/M/Y", strtotime($h['start_date'])); ?> </td>
-                                <td> <?php echo date("d/M/Y", strtotime($h['end_date'])); ?> </td>
-                                <td> <?php echo $h['support']; ?> </td>
-                                <td> <?php echo $h['confidence']; ?> </td>
+                                <td> <?php echo date("d/M/Y", strtotime($h->start_date)); ?> </td>
+                                <td> <?php echo date("d/M/Y", strtotime($h->end_date)); ?> </td>
+                                <td> <?php echo $h->min_support; ?> </td>
+                                <td> <?php echo $h->min_confidence; ?> </td>
                                 <td>
-                                    <a type="button" href="<?= base_url('historydatmin/detailknowledge') ?>" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Lihat Knowledge</a>
+                                    <a type="button" href="<?= base_url('historydatmin/viewRule/' . $h->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Lihat Knowledge</a>
 
-                                    <a onclick="javacript:return confirm('Anda yakin menghapus knowledge ini?')" href="<?php echo base_url('historydatmin/hapushistory/') . $h['id'] ?>" class=" btn btn-danger btn-icon-split btn-sm">
+                                    <a onclick="javacript:return confirm('Anda yakin menghapus knowledge ini?')" href="<?php echo base_url('historydatmin/hapushistory/') . $h->id ?>" class=" btn btn-danger btn-icon-split btn-sm">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

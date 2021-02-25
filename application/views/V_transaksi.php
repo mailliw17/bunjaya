@@ -210,6 +210,18 @@
 </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+<?php if ($this->session->flashdata('insert_multidata_berhasil')) : ?>
+    <script>
+        Swal.fire(
+            'Berhasil',
+            'Transaksi sukses dilaksanakan!',
+            'success'
+        )
+    </script>
+<?php endif; ?>
+
 <script src="<?= base_url() ?>vendor/sbadmin2/jquery/jquery.min.js"></script>
 
 <script>
