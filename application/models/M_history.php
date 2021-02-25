@@ -4,11 +4,7 @@ class M_history extends CI_Model
 {
     public function tampilhistory()
     {
-        return $this->db->query("SELECT log_transaksi.id_transaksi, log_transaksi.tanggal, pelanggan.nama_pelanggan, SUM(log_transaksi.sub_total) AS total FROM log_transaksi
-          INNER JOIN pelanggan 
-         ON log_transaksi.id_pelanggan = pelanggan.id_pelanggan
-          GROUP BY log_transaksi.id_transaksi, log_transaksi.tanggal, pelanggan.nama_pelanggan
-          ORDER BY log_transaksi.id_transaksi DESC")->result_array();
+        return $this->db->query("SELECT id_transaksi, transaction_date, produk, qty, harga_satuan, total, pelanggan FROM transaksi")->result_array();
     }
 
     // public function detailbelanja()

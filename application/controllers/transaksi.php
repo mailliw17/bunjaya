@@ -31,37 +31,72 @@ class transaksi extends CI_Controller
         echo json_encode($data);
     }
 
-    public function get_data_pelanggan()
+    // public function get_data_pelanggan()
+    // {
+    //     $nama_pelanggan = $this->input->post('nama_pelanggan');
+    //     $data = $this->M_transaksi->getIDPelanggan($nama_pelanggan);
+    //     echo json_encode($data);
+    // }
+
+    // public function insert_transaksi()
+    // {
+    //     $count = $this->input->post('qty');
+    //     $result = array();
+
+    //     $kucing =  $_POST['id_transaksi'];
+
+    //     foreach ($count as $key => $val) {
+    //         $result[] = array(
+    //             "id_transaksi"  => $_POST['id_transaksi'],
+    //             "tanggal"  => date("Y-m-d", strtotime($_POST['tanggal'])),
+    //             "id_barang"  => (int)$_POST['id_barang'][$key],
+    //             "qty"  => (int)$_POST['qty'][$key],
+    //             "harga_satuan"  => (int)$_POST['harga_satuan'][$key],
+    //             "sub_total"  => (int)$_POST['sub_total'][$key],
+    //             "pelanggan"  => $_POST['id_pelanggan'],
+    //             // "total_harga"  => (int)$_POST['total_harga'] 
+    //         );
+    //     }
+
+    //     $this->db->insert_batch('log_transaksi', $result);
+
+    //     $this->session->set_flashdata('insert_multidata_berhasil', 'berhasil');
+
+    //     redirect('history_penjualan');
+    // }
+
+    public function insert_transaksi()
     {
-        $nama_pelanggan = $this->input->post('nama_pelanggan');
-        $data = $this->M_transaksi->getIDPelanggan($nama_pelanggan);
-        echo json_encode($data);
-    }
+        // untuk konversi array ke string
+        $produk = $this->input->post('nama_barang[]', true);
+        $hasil_produk = implode(",", $produk);
 
-    public function insert_multidata()
-    {
-        $count = $this->input->post('qty');
-        $result = array();
+        $qty = $this->input->post('qty[]', true);
+        $hasil_qty = implode(",", $qty);
 
-        $kucing =  $_POST['id_transaksi'];
+        $harga_satuan = $this->input->post('harga_satuan[]', true);
+        $hasil_harga_satuan = implode(",", $harga_satuan);
 
-        foreach ($count as $key => $val) {
-            $result[] = array(
-                "id_transaksi"  => $_POST['id_transaksi'],
-                "tanggal"  => date("Y-m-d", strtotime($_POST['tanggal'])),
-                "id_barang"  => (int)$_POST['id_barang'][$key],
-                "qty"  => (int)$_POST['qty'][$key],
-                "harga_satuan"  => (int)$_POST['harga_satuan'][$key],
-                "sub_total"  => (int)$_POST['sub_total'][$key],
-                "id_pelanggan"  => (int) $_POST['id_pelanggan'],
-                // "total_harga"  => (int)$_POST['total_harga'] 
-            );
+        // mendapatkan nilai TOTAL harga
+        for ($i = 0; $i < count($harga_satuan); $i++) {
+            $sub_total[$i] = $harga_satuan[$i] * $qty[$i];
         }
+        $total = array_sum($sub_total);
 
-        $this->db->insert_batch('log_transaksi', $result);
+        $data = [
+            "id_transaksi" => $this->input->post('id_transaksi', true),
+            "transaction_date" => date("Y-m-d", strtotime($_POST['datepicker'])),
+            "pelanggan" => $this->input->post('nama_pelanggan', true),
+            "produk" => $hasil_produk,
+            "qty" => $hasil_qty,
+            "harga_satuan" => $hasil_harga_satuan,
+            "total" => $total
+        ];
+        $this->db->insert('transaksi', $data);
 
         $this->session->set_flashdata('insert_multidata_berhasil', 'berhasil');
 
-        redirect('history_penjualan');
+        // sementara history penjualan diperbaiki, jadi redirect kesini dulu
+        redirect('dashboard');
     }
 }

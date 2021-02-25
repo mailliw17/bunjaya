@@ -34,8 +34,8 @@
                             <tr>
                                 <td> <?php echo $no; ?> </td>
                                 <td> <?php echo $h['id_transaksi']; ?> </td>
-                                <td> <?php echo date("d/M/Y", strtotime($h['tanggal'])); ?> </td>
-                                <td> <?php echo $h['nama_pelanggan']; ?> </td>
+                                <td> <?php echo date("d/M/Y", strtotime($h['transaction_date'])); ?> </td>
+                                <td> <?php echo $h['pelanggan']; ?> </td>
                                 <td> <?php $hasil_rupiah = "Rp " . number_format($h['total'], 2, ',', '.');
                                         echo $hasil_rupiah; ?> </td>
 

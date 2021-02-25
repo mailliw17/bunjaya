@@ -21,6 +21,9 @@
     <link href="<?= base_url() ?>vendor/sbadmin2/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
     <!-- Datepicker -->
+    <link rel="stylesheet" href="<?= base_url() ?>vendor/range-datepicker/daterangepicker.css">
+
+    <!-- Range Datepicker -->
     <link rel="stylesheet" href="<?= base_url() ?>vendor/datepicker/dist/css/bootstrap-datepicker.min.css">
 
     <!-- Sweetalert -->
@@ -130,7 +133,7 @@
             <li <?= ($this->uri->segment(1) == 'history_penjualan') ? 'class="nav-item active"' : 'class="nav-item"' ?>>
                 <a class="nav-link" href="<?= base_url() ?>history_penjualan" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-history"></i>
-                    <span>History Penjualan</span>
+                    <span>History Penjualan (Masih error, nanti dulu)</span>
                 </a>
             </li>
 

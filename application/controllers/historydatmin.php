@@ -22,9 +22,9 @@ class historydatmin extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function hapushistory($id_history_mining)
+    public function hapushistory($id)
     {
-        $this->M_mining->hapushistory($id_history_mining);
+        $this->M_mining->hapushistory($id);
 
         $this->session->set_flashdata('message_hapus', '<div class="alert alert-success" role="alert">
                 </div>');

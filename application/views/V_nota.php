@@ -131,10 +131,10 @@
 
                                 <b>No Invoice :</b>
 
-                                <?php echo $nota2->id; ?>
+                                <?php echo $nota['hari']; ?>
                                 <br>
                                 <b>Tanggal Transaksi :</b>
-                                <?php $hari = $nota2->hari;
+                                <?php $hari = $nota['hari'];
                                 switch ($hari) {
                                     case "0":
                                         echo "Senin";
@@ -157,14 +157,14 @@
                                     case "6":
                                         echo "Minggu";
                                         break;
-                                } ?> <?php echo date("d/M/Y", strtotime($nota2->tanggal)); ?>
+                                } ?> <?php echo date("d/M/Y", strtotime($nota['transaction_date'])); ?>
 
 
                             </td>
 
                             <td>
                                 <b>Pelanggan :</b> <br>
-                                <?php echo $nota2->nama_pelanggan; ?><br>
+                                <?php echo $nota['pelanggan']; ?><br>
 
                             </td>
                         </tr>
@@ -189,13 +189,21 @@
                     Harga Satuan
                 </td>
 
-                <td>
-                    Subtotal
-                </td>
             </tr>
             <?php
+            $produk_perulangan = array($nota['produk']);
+            $aproduk = implode(",", $produk_perulangan);
+
+            $qty_perulangan = array($nota['qty']);
+            $aqty = implode(",", $qty_perulangan);
+
+            $harga_satuan_perulangan = array($nota['harga_satuan']);
+            $ahargasatuan = implode(",", $harga_satuan_perulangan);
+
+            ?>
+            <?php
             $no = 1;
-            foreach ($nota1 as $n) :
+            foreach ($nota as $n) :
             ?>
                 <tr class="item">
                     <td>
@@ -203,22 +211,16 @@
                     </td>
 
                     <td>
-                        <?php echo $n['nama_barang']; ?>
+                        <?php echo $aproduk; ?>
                     </td>
 
                     <td>
-                        <?php echo $n['qty']; ?>
+                        <?php echo $aqty; ?>
                     </td>
 
                     <td>
-                        <?php $hasil_rupiah = "Rp " . number_format($n['harga_satuan'], 0, ',', '.');
+                        <?php $hasil_rupiah = "Rp " . number_format($ahargasatuan, 0, ',', '.');
                         echo $hasil_rupiah; ?>
-                    </td>
-
-                    <td>
-                        <?php $hasil_rupiah = "Rp " . number_format($n['sub_total'], 0, ',', '.');
-                        echo $hasil_rupiah; ?>
-
                     </td>
                 </tr>
             <?php $no++;
@@ -229,7 +231,7 @@
                 <!-- <td></td> -->
                 <hr>
                 <td>
-                    Total Pembayaran: <br> <?php $hasil_rupiah = "Rp " . number_format($nota3['total'], 0, ',', '.');
+                    Total Pembayaran: <br> <?php $hasil_rupiah = "Rp " . number_format($nota['total'], 0, ',', '.');
                                             echo $hasil_rupiah; ?>
                 </td>
             </tr>

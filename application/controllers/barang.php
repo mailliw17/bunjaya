@@ -25,6 +25,7 @@ class barang extends CI_Controller
 
     public function tambahbarangbaru()
     {
+    
         $data['barang'] = $this->M_transaksi->getNamaBarang();
 
         $this->form_validation->set_rules(

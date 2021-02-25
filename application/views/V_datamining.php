@@ -30,22 +30,19 @@
             </div>
         </div>
     </div>
-    <form action="<?= base_url('datamining') ?>" method="post" class="form-group col-md-4">
+    <form action="<?= base_url() ?>datamining/prosesapriori" method="post" class="form-group col-md-4">
 
         <div class="form-group row">
-            <div class="col-md-6">
-                <label for="nama">Start Date</label>
-                <input type="text" class="form-control datepicker" id="datepicker" required>
-            </div>
-            <div class="col-md-6">
-                <label for="nama">End Date</label>
-                <input type="text" class="form-control datepicker" id="datepicker" required>
+            <div class="col-md-12">
+                <i class="fas fa-calendar-week"></i>
+                <label for="nama">Rentang Tanggal</label>
+                <input type="text" class="form-control" id="daterange" placeholder="24/02/2021 - 25/02/2021" name="datefilter" autocomplete="off" required>
             </div>
         </div>
 
         <div class="form-group">
             <label for="nama">Nilai Support</label>
-            <input type="number" step="0.1" class="form-control" id="support" placeholder="10" name="support" required autocomplete="off">
+            <input type="number" step="any" class="form-control" id="support" placeholder="10" name="support" required autocomplete="off">
             <?= form_error('support', ' <small class="text-danger pl-3">', '</small>');  ?>
         </div>
 
@@ -59,7 +56,7 @@
 
         <div class="form-group float-right">
             <!-- <button class="mt-1 btn btn-danger" type="reset" data-dismiss="modal">Batal</button> -->
-            <button class="mt-1 btn btn-primary" type="submit">Proses</button>
+            <button class="mt-1 btn btn-primary" type="submit">Mulai Proses</button>
         </div>
     </form>
 </div>

@@ -20,4 +20,9 @@ class datamining extends CI_Controller
         $this->load->view('V_datamining');
         $this->load->view('templates/footer');
     }
+
+    public function prosesapriori()
+    {
+        echo 'sesuaikan data mu dulu';
+    }
 }

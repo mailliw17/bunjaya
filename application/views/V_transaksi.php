@@ -1,12 +1,5 @@
-<?php if ($this->session->flashdata('berhasil')) : ?>
-    <!-- <h3 class="panel-title">Arahkan Kode QR Ke Kamera!</h3> -->
-    <audio controls autoplay hidden>
-        <source src="<?= base_url() ?>assets/berhasil.mp3" type="audio/mpeg">
-    </audio>
-<?php endif; ?>
-
 <div class="form-group">
-    <form enctype="multipart/form-data" action="<?= base_url() ?>transaksi/insert_multidata" method="POST" name="add_name" id="add_name">
+    <form enctype="multipart/form-data" action="<?= base_url() ?>transaksi/insert_transaksi" method="POST" name="add_name" id="add_name">
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -84,7 +77,7 @@
                                         Tanggal
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <input type="text" class="form-control datepicker" id="tanggal" name="tanggal" autocomplete="off" required>
+                                        <input type="text" class="form-control datepicker" id="tanggal" name="datepicker" autocomplete="off" required>
                                     </div>
                                 </div>
                                 <div class="col-auto">
@@ -98,7 +91,7 @@
 
                 <!-- <div class="form-group col-md-1"> -->
                 <!-- <label for="id_pelanggan">ID_pelanggan</label> -->
-                <input type="hidden" class="form-control" id="id_pelanggan" name="id_pelanggan" readonly>
+                <!-- <input type="hidden" class="form-control" id="id_pelanggan" name="id_pelanggan" readonly> -->
                 <!-- <div class="input-group-append"></div> -->
                 <!-- </div> -->
 
@@ -122,7 +115,7 @@
                                         Pelanggan
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                        <input list="nama_pelanggan_dropdown" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Masukan nama pelanggan" required autocomplete="off" onchange="autoFillPelanggan(this.value)" required>
+                                        <input list="nama_pelanggan_dropdown" class="form-control" id="nama_pelanggan" name="nama_pelanggan" placeholder="Masukan nama pelanggan" required autocomplete="off" required>
                                         <datalist id="nama_pelanggan_dropdown">
                                             <?php
                                             foreach ($pelanggan as $p) : ?>
@@ -373,32 +366,32 @@
         });
     }
 
-    function autoFillPelanggan(value) {
-        var nama_pelanggan = value;
-        var id_pelanggan = document.getElementById("id_pelanggan");
+    // function autoFillPelanggan(value) {
+    //     var nama_pelanggan = value;
+    //     var id_pelanggan = document.getElementById("id_pelanggan");
 
-        $.ajax({
-            url: "<?php echo base_url(); ?>index.php/transaksi/get_data_pelanggan",
-            method: "POST",
-            data: {
-                nama_pelanggan: nama_pelanggan
-            },
-            dataType: 'json',
-            success: function(data) {
-                console.log(data);
-                if (data != false) { // nim ditemukan
-                    $.each(data, function(key, val) {
-                        console.log(val.id_pelanggan);
-                        id_pelanggan.value = parseInt(val.id_pelanggan);
-                    });
-                } else {
-                    console.log('Tidak ditemukan');
-                    id_pelanggan.value = '';
-                }
+    //     $.ajax({
+    //         url: "<?php echo base_url(); ?>index.php/transaksi/get_data_pelanggan",
+    //         method: "POST",
+    //         data: {
+    //             nama_pelanggan: nama_pelanggan
+    //         },
+    //         dataType: 'json',
+    //         success: function(data) {
+    //             console.log(data);
+    //             if (data != false) { // nim ditemukan
+    //                 $.each(data, function(key, val) {
+    //                     console.log(val.id_pelanggan);
+    //                     id_pelanggan.value = parseInt(val.id_pelanggan);
+    //                 });
+    //             } else {
+    //                 console.log('Tidak ditemukan');
+    //                 id_pelanggan.value = '';
+    //             }
 
-            }
-        });
-    }
+    //         }
+    //     });
+    // }
 
     // $(document).ready(function() {
     //     var totalan = document.getElementsByName('sub_total');
@@ -427,6 +420,8 @@
     //     console.log(a);
     // }
 </script>
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 

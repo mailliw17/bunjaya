@@ -4,7 +4,7 @@ class M_pelanggan extends CI_Model
 {
     public function tampilpelanggan()
     {
-        return $this->db->query("SELECT * FROM pelanggan")->result_array();
+        return $this->db->query("SELECT * FROM pelanggan ORDER BY id_pelanggan DESC")->result_array();
     }
 
     public function tambahpelanggan()

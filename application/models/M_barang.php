@@ -4,12 +4,12 @@ class M_barang extends CI_Model
 {
     public function tampilbarang()
     {
-        return $this->db->query("SELECT * FROM barang ");
+        return $this->db->query("SELECT * FROM barang ORDER BY id_barang DESC ");
         // ini utk format Rp di harga satuan, tp blm bisa terpanggil
         // return $this->db->query("SELECT CONCAT('Rp ', format( sum(harga_satuan), 0)s) from barang");
     }
 
-    // public function tampilhargabarang()
+    // public function tampilhargabarang() 
     // {
     //     return $this->db->query("SELECT CONCAT('Rp ', format( sum(harga_satuan), 0)) from barang");
     // }

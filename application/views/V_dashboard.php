@@ -84,9 +84,7 @@
                         <tr>
                             <th>Nomor</th>
                             <th>Pengetahuan</th>
-                            <th>Nilai Support</th>
-                            <th>Nilai Confidence</th>
-                            <th>Nilai Lift Ratio</th>
+                            <th>Akurasi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,9 +94,7 @@
                         <tr>
                             <td> <?php echo $no; ?> </td>
                             <td> Pelanggan yang membeli Fren Klea, memiliki kemungkinan 100 % juga untuk membeli Condensor</td>
-                            <td>12.33</td>
-                            <td>100</td>
-                            <td>6.905</td>
+                            <td>100%</td>
                         </tr>
                         <?php $no++; ?>
                     </tbody>

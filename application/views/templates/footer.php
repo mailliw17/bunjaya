@@ -17,7 +17,7 @@
      <i class="fas fa-angle-up"></i>
  </a>
 
- <!-- Logout Modal-->
+ <!-- Logout Modal (JANGAN DIPINDAH MODAL INI)-->
  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
      <div class="modal-dialog" role="document">
          <div class="modal-content">
@@ -40,34 +40,11 @@
      </div>
  </div>
 
- <!-- Detail History Penjualan Modal -->
- <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-     <div class="modal-dialog" role="document">
-         <div class="modal-content">
-             <div class="modal-header">
-                 <h5 class="modal-title" id="exampleModalLabel">Barang Belanja</h5>
-                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">×</span>
-                 </button>
-             </div>
-             <div class="modal-body">
-                 <span id="barang"></span>
-             </div>
-             <div class="modal-footer">
-                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                     Batal
-                 </button>
-                 <a class="btn btn-primary" href="#">Cetak Struk</a>
-             </div>
-         </div>
-     </div>
- </div>
-
-
  <!-- Bootstrap core JavaScript-->
  <script src="<?= base_url() ?>vendor/sbadmin2/jquery/jquery.min.js"></script>
  <script src="<?= base_url() ?>vendor/sbadmin2/bootstrap/js/bootstrap.bundle.min.js"></script>
  <script src="<?= base_url() ?>vendor/sbadmin2/bootstrap/js/bootstrap.min.js"></script>
+
 
 
  <!-- Core plugin JavaScript-->
@@ -88,18 +65,45 @@
  </script>
 
 
- <!-- Datepicker -->
- <script src="<?= base_url() ?>vendor/datepicker/dist/js/bootstrap-datepicker.min.js"> </script>
+ <!-- Date Range picker -->
+ <script src="<?= base_url() ?>vendor/range-datepicker/moment.min.js"></script>
+ <script src="<?= base_url() ?>vendor/range-datepicker/daterangepicker.min.js"></script>
 
  <script>
      $(function() {
+
+         $('input[name="datefilter"]').daterangepicker({
+             autoUpdateInput: false,
+             locale: {
+                 cancelLabel: 'Clear'
+             }
+         });
+
+         $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+             $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
+         });
+
+         $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+             $(this).val('');
+         });
+
+     });
+ </script>
+
+
+ <!-- Single Datepicker -->
+ <script src="<?= base_url() ?>vendor/datepicker/dist/js/bootstrap-datepicker.js"></script>
+
+ <script type="text/javascript">
+     $(function() {
          $(".datepicker").datepicker({
-             format: 'dd-mm-yyyy',
+             format: "dd-mm-yyyy",
              autoclose: true,
              todayHighlight: true,
          });
      });
  </script>
+
 
  <!-- Sweetalert -->
  <script src="<?= base_url() ?>vendor/sweetalert2/package/dist/sweetalert2.all.min.js"></script>

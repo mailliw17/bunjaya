@@ -41,7 +41,7 @@
                                 <td>
                                     <a type="button" href="<?= base_url('historydatmin/detailknowledge') ?>" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Lihat Knowledge</a>
 
-                                    <a onclick="javacript:return confirm('Anda yakin menghapus knowledge ini?')" href="<?php echo base_url('historydatmin/hapushistory/') . $h['id_history_mining'] ?>" class=" btn btn-danger btn-icon-split btn-sm">
+                                    <a onclick="javacript:return confirm('Anda yakin menghapus knowledge ini?')" href="<?php echo base_url('historydatmin/hapushistory/') . $h['id'] ?>" class=" btn btn-danger btn-icon-split btn-sm">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-trash"></i>
                                         </span>

@@ -21,9 +21,7 @@ class auth extends CI_Controller
         //validasi login
         if ($this->form_validation->run() == false) {
             $judul['page_title'] = 'Halaman Login';
-            // $this->load->view('templates/auth_header_login', $judul);
             $this->load->view('V_login', $judul);
-            // $this->load->view('templates/auth_footer');
         } else {
             //kalau berhasil login
             $this->_login();
@@ -69,12 +67,12 @@ class auth extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
        Kamu berhasil Logout!
        </div>');
-        redirect('auth/index');
+        redirect('auth');
     }
 
     public function gantipassword()
     {
-        $data['user'] = $this->db->get_where('user', ['id_user' => $this->session->userdata('id_user')])->row_array();
+        $data['user'] = $this->db->get_where('users', ['id_user' => $this->session->userdata('id_user')])->row_array();
 
         $this->form_validation->set_rules('passwordLama', 'Password Lama', 'required|trim');
 
@@ -117,7 +115,7 @@ class auth extends CI_Controller
 
                     $this->db->set('password', $password_hash);
                     $this->db->where('username', $this->session->userdata('username'));
-                    $this->db->update('user');
+                    $this->db->update('users');
 
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                     Password Berhasil diganti!
@@ -133,7 +131,7 @@ class auth extends CI_Controller
         $this->form_validation->set_rules(
             'username',
             'Username',
-            'trim|required|is_unique[user.username]',
+            'trim|required|is_unique[users.username]',
             array(
                 'is_unique' => 'Pembuatan Akun Gagal karena Username sudah terdaftar'
             )

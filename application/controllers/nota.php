@@ -13,9 +13,10 @@ class nota extends CI_Controller
 
     public function print($id_transaksi)
     {
-        $data['nota1'] = $this->M_nota->printnota1($id_transaksi);
-        $data['nota2'] = $this->M_nota->printnota2($id_transaksi);
-        $data['nota3'] = $this->M_nota->totalharga($id_transaksi);
+        // $data['nota1'] = $this->M_nota->printnota1($id_transaksi); 
+        // $data['nota2'] = $this->M_nota->printnota2($id_transaksi);
+        // $data['nota3'] = $this->M_nota->totalharga($id_transaksi);
+        $data['nota'] = $this->M_nota->printNota($id_transaksi);
 
         $this->load->view('V_nota', $data);
 
