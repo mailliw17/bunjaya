@@ -13,15 +13,15 @@ class historydatmin extends CI_Controller
         $this->load->model('M_mining');
     }
 
-    public function index()
-    {
-        // $data['history'] = $this->M_mining->tampilhistory();
-        $data["history"] = $this->M_mining->getHasil();
-        $judul['page_title'] = 'History Data Mining';
-        $this->load->view('templates/header', $judul);
-        $this->load->view('V_history_datamining', $data);
-        $this->load->view('templates/footer');
-    }
+    // public function index()
+    // {
+    //     // $data['history'] = $this->M_mining->tampilhistory();
+    //     $data["history"] = $this->M_mining->getHasil();
+    //     $judul['page_title'] = 'History Data Mining';
+    //     $this->load->view('templates/header', $judul);
+    //     $this->load->view('V_history_datamining', $data);
+    //     $this->load->view('templates/footer');
+    // }
 
     public function hapushistory($id)
     {
@@ -29,7 +29,7 @@ class historydatmin extends CI_Controller
 
         $this->session->set_flashdata('message_hapus', '<div class="alert alert-success" role="alert">
                 </div>');
-        redirect('datamining/history');
+        redirect('historydatmin');
     }
 
     // public function detailknowledge()

@@ -51,7 +51,7 @@ class datamining extends CI_Controller
             // redirect(site_url('historydatmin/viewRule/' . $last));
             redirect('historydatmin/viewRule/' . $last);
         } else {
-            $this->session->set_flashdata('error', 'Mining Gagal');
+            $this->session->set_flashdata('error', 'Mining Gagal Nilai Support Terlalu Tinggi / Tidak ada transaksi pada tanggal tersebut');
             redirect('datamining');
         }
     }

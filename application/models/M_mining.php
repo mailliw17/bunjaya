@@ -620,7 +620,8 @@ WHERE conf.id_process='$id_process'" . "AND conf.id_process=log.id " . "AND conf
         $dataTransaksi = $myrow = $item_list = array();
         // $jumlah_transaksi=num_rows($jumlah_trans);
 
-        $min_support_relative = ($min_support / $jumlah_transaksi) * 100;
+        //$min_support_relative = ($min_support / $jumlah_transaksi) * 100;
+        $min_support_relative = $min_support;
         $x = 0;
         $radja = 0;
         $Lord = 0;
@@ -722,7 +723,7 @@ WHERE conf.id_process='$id_process'" . "AND conf.id_process=log.id " . "AND conf
             $pull = $jumdataset1[$item];
             $support = ($pull / $jumlah_transaksi) * 100;
 
-            // var_dump($item);
+            // var_dump($item); 
 
             // var_dump($jumlah);
             // var_dump($jumlah_transaksi);

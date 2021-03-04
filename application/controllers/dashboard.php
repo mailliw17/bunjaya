@@ -18,6 +18,7 @@ class dashboard extends CI_Controller
         $data['pelanggan'] = $this->M_dashboard->countPelanggan()->num_rows();
         $data['barang'] = $this->M_dashboard->countBarang()->num_rows();
         $data['transaksi'] = $this->M_dashboard->countTransaksi()->num_rows();
+        $data["history"] = $this->M_mining->getHasil();
         $judul['page_title'] = 'Dashboard';
         $this->load->view('templates/header', $judul);
         $this->load->view('V_dashboard', $data);

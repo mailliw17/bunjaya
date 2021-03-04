@@ -217,21 +217,32 @@
 						<tr>
 							<th>Nomor</th>
 							<th>Knowledge</th>
-							<th>Akurasi</th>
+							<th>Confidence</th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php $j = 1;
 						arsort($data_confidence);
-						$RADJAWILLIAM = 1; ?>
+						$RADJAWILLIAM = 1;
+						$eskrim = 'Radjawilliam';
+						$No = 0; ?>
+
 						<?php foreach ($data_confidence as $val) {
-							if ($RADJAWILLIAM > 20)
+							$sembah = 0;
+							$sembahlagi = 0;
+							if ($RADJAWILLIAM > 100)
 								break;
-							if ($val->confidence == 100) {
+							if (strpos($val->kombinasi1, ',') !== false)
+								$sembah = 1;
+							if (strpos($val->kombinasi2, ',') !== false)
+								$sembahlagi = 1;
+
+							if ($val->confidence >= 80 && $val->kombinasi1 != $eskrim && $sembah == 0 && $sembahlagi == 0) {
 								$RADJAWILLIAM++;
+								$No++;
 						?>
 								<tr>
-									<td align="center" width="5"><?php echo $j ?></td>
+									<td align="center" width="5"><?php echo $No ?></td>
 									<td> Jika konsumen membeli <span class="badge badge-pill badge-primary"><?php echo $val->kombinasi1 ?></span> , maka
 										konsumen juga akan membeli <span class="badge badge-pill badge-success"><?php echo $val->kombinasi2 ?></span>
 									</td>
@@ -240,6 +251,7 @@
 								</tr>
 						<?php
 							}
+							$eskrim = $val->kombinasi1;
 							$j++;
 						}
 						?>

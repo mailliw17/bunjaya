@@ -64,13 +64,13 @@
         </div>
 
         <div class="form-group">
-            <label for="nama">Nilai Support</label>
+            <label for="nama">Nilai Support (%)</label>
             <input type="number" step="any" class="form-control" id="support" placeholder="10" name="support" required autocomplete="off">
             <?= form_error('support', ' <small class="text-danger pl-3">', '</small>');  ?>
         </div>
 
         <div class="form-group">
-            <label for="username">Nilai Confidence</label>
+            <label for="username">Nilai Confidence (%)</label>
             <input type="number" step="0.1" class="form-control" id="confidence" placeholder="20" name="confidence" required autocomplete="off">
             <?= form_error('confidence', ' <small class="text-danger pl-3">', '</small>');  ?>
         </div>
