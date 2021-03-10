@@ -133,7 +133,7 @@
             <li <?= ($this->uri->segment(1) == 'history_penjualan') ? 'class="nav-item active"' : 'class="nav-item"' ?>>
                 <a class="nav-link" href="<?= base_url() ?>history_penjualan" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-history"></i>
-                    <span>History Penjualan (Cetak nota error)</span>
+                    <span>History Penjualan</span>
                 </a>
             </li>
 

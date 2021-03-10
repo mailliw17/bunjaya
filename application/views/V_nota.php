@@ -101,6 +101,37 @@
 </head>
 
 <body>
+    <?php
+    $radja = array();
+    $zuppa = array();
+    $Skirpsi = array();
+
+    $var = $nota['produk'];
+    $sembah = 1;
+    $array = explode(',', $var);
+    foreach ($array as $value) {
+        $radja[$sembah] = $value;
+        $sembah++;
+    }
+
+    $sembah = 1;
+    $var = $nota['qty'];
+    $array = explode(',', $var);
+    foreach ($array as $value) {
+        $zuppa[$sembah] = $value;
+        $sembah++;
+    }
+
+    $sembah = 1;
+    $var = $nota['harga_satuan'];
+    $array3 = explode(',', $var);
+    // $sesuaiformat = "Rp " . number_format($array3, 0, ',', '.');
+    foreach ($array3 as $value) {
+        $Skripsi[$sembah] = $value;
+        $sembah++;
+    }
+
+    ?>
     <div class="invoice-box">
 
         <table cellpadding="0" cellspacing="0">
@@ -129,9 +160,8 @@
                         <tr>
                             <td>
 
-                                <b>No Invoice :</b>
+                                <b>No Invoice : <?php echo $nota['id_transaksi']; ?> </b>
 
-                                <?php echo $nota['hari']; ?>
                                 <br>
                                 <b>Tanggal Transaksi :</b>
                                 <?php $hari = $nota['hari'];
@@ -190,41 +220,20 @@
                 </td>
 
             </tr>
-            <?php
-            $produk_perulangan = array($nota['produk']);
-            $aproduk = implode(",", $produk_perulangan);
 
-            $qty_perulangan = array($nota['qty']);
-            $aqty = implode(",", $qty_perulangan);
 
-            $harga_satuan_perulangan = array($nota['harga_satuan']);
-            $ahargasatuan = implode(",", $harga_satuan_perulangan);
 
-            ?>
-            <?php
-            $no = 1;
-            foreach ($nota as $n) :
-            ?>
+            <?php $nanges = 1;
+            for ($i = 1; $i <= $sembah - 1; $i++) { ?>
                 <tr class="item">
-                    <td>
-                        <?php echo $no; ?>
-                    </td>
-
-                    <td>
-                        <?php echo $aproduk; ?>
-                    </td>
-
-                    <td>
-                        <?php echo $aqty; ?>
-                    </td>
-
-                    <td>
-                        <?php $hasil_rupiah = "Rp " . number_format($ahargasatuan, 0, ',', '.');
-                        echo $hasil_rupiah; ?>
-                    </td>
+                    <td><?php echo $nanges ?></td>
+                    <td><?php echo $radja[$i] ?></td>
+                    <td><?php echo $zuppa[$i] ?></td>
+                    <td><?php echo "Rp " . number_format($Skripsi[$i], 0, ',', '.'); ?></td>
                 </tr>
-            <?php $no++;
-            endforeach; ?>
+            <?php $nanges++;
+            } ?>
+
 
 
             <tr class="total">

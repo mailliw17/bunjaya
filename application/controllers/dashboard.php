@@ -12,7 +12,7 @@ class dashboard extends CI_Controller
         }
         $this->load->model('M_dashboard');
     }
-
+ 
     public function index()
     {
         $data['pelanggan'] = $this->M_dashboard->countPelanggan()->num_rows();
