@@ -3,7 +3,7 @@
 	<!-- Page Heading -->
 	<!-- <h1 class="h3 mb-2 text-gray-800">History Data Mining</h1> -->
 	<div class="" style="margin-bottom: 10px;">
-		<a class="btn btn-primary btn-sm" type="button" href="<?= base_url('historydatmin') ?>"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
+		<a class="btn btn-primary btn-sm" type="button" href="<?= base_url('dashboard') ?>"><i class="fas fa-long-arrow-alt-left"></i> Kembali</a>
 	</div>
 
 	<div class="card shadow mb-4">
@@ -217,7 +217,9 @@
 						<tr>
 							<th>Nomor</th>
 							<th>Knowledge</th>
+							<th>Support</th>
 							<th>Confidence</th>
+							<th>SupXConf</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -247,7 +249,15 @@
 										konsumen juga akan membeli <span class="badge badge-pill badge-success"><?php echo $val->kombinasi2 ?></span>
 									</td>
 									<td align="center" width="150">
+										<?php echo number_format($val->support_xUy, 3)  ?>%</td>
+									<td align="center" width="150">
 										<?php echo $val->confidence ?>%</td>
+									<td align="center" width="150">
+										<?php $a = $val->support_xUy;
+										$b = $val->confidence;
+										$hasil =  $a * $b;
+										echo number_format($hasil, 3);
+										?>%</td>
 								</tr>
 						<?php
 							}
