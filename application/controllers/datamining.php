@@ -31,6 +31,9 @@ class datamining extends CI_Controller
         $min_support = $_POST['support'];
         $min_confidence = $_POST['confidence'];
 
+
+        $_SESSION['RADJA'] = $min_confidence;
+
         $tgl = explode(" - ", $_POST['range_tanggal']);
         $start = format_date($tgl[0]);
         $end = format_date($tgl[1]);

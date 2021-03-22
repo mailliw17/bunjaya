@@ -222,6 +222,16 @@
     </script>
 <?php endif; ?>
 
+<?php if ($this->session->flashdata('rekomendasi')) : ?>
+    <script>
+        Swal.fire(
+            'Rekomendasi Barang',
+            'Silahkan tawarkan Pentil R134',
+            'success'
+        )
+    </script>
+<?php endif; ?>
+
 <script src="<?= base_url() ?>vendor/sbadmin2/jquery/jquery.min.js"></script>
 
 <script>

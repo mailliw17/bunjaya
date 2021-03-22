@@ -34,8 +34,8 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="col-sm">
-					<h5>Min Support: <?php echo $RuleID->min_support ?></h5>
-					<h5>Min Confidence: <?php echo $RuleID->min_confidence ?> </h5>
+					<h5>Min Support (%): <?php echo $RuleID->min_support ?></h5>
+					<h5>Min Confidence (%): <?php echo $RuleID->min_confidence ?></h5>
 				</div>
 				<div class="col-sm">
 					<h5>Start Date: <?php echo date("d/M/Y", strtotime($RuleID->start_date)); ?> </h5>
@@ -217,9 +217,9 @@
 						<tr>
 							<th>Nomor</th>
 							<th>Knowledge</th>
-							<th>Support</th>
-							<th>Confidence</th>
-							<th>SupXConf</th>
+							<th>Support(%)</th>
+							<th>Confidence(%)</th>
+							<th>Sup X Conf</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -249,15 +249,15 @@
 										konsumen juga akan membeli <span class="badge badge-pill badge-success"><?php echo $val->kombinasi2 ?></span>
 									</td>
 									<td align="center" width="150">
-										<?php echo number_format($val->support_xUy, 3)  ?>%</td>
+										<?php echo number_format($val->support_xUy, 3)  ?></td>
 									<td align="center" width="150">
-										<?php echo $val->confidence ?>%</td>
+										<?php echo $val->confidence ?></td>
 									<td align="center" width="150">
 										<?php $a = $val->support_xUy;
 										$b = $val->confidence;
 										$hasil =  $a * $b;
 										echo number_format($hasil, 3);
-										?>%</td>
+										?></td>
 								</tr>
 						<?php
 							}

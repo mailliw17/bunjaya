@@ -1,4 +1,5 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_mining extends CI_Model
 {
@@ -87,6 +88,7 @@ class M_mining extends CI_Model
     public function confidenceItemset3($id)
     {
         $id_process = $id;
+        $_SESSION['eskrim'] = $id_process;
         $sql = "SELECT conf.*, log.start_date, log.end_date FROM confidence conf, process_log log
 WHERE conf.id_process='$id_process'" . "AND conf.id_process=log.id " . "AND conf.from_itemset=3 ";
         return $this->db->query($sql)->result();

@@ -102,8 +102,8 @@
                                 <td> <?php echo $no; ?> </td>
                                 <td> <?php echo date("d/M/Y", strtotime($h->start_date)); ?> </td>
                                 <td> <?php echo date("d/M/Y", strtotime($h->end_date)); ?> </td>
-                                <td> <?php echo $h->min_support; ?> </td>
-                                <td> <?php echo $h->min_confidence; ?> </td>
+                                <td> <?php echo $h->min_support; ?>% </td>
+                                <td> <?php echo $h->min_confidence; ?>% </td>
                                 <td>
                                     <a type="button" href="<?= base_url('historydatmin/viewRule/' . $h->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-info-circle"></i> Lihat Knowledge</a>
 

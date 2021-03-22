@@ -96,6 +96,8 @@ class transaksi extends CI_Controller
 
         $this->session->set_flashdata('insert_multidata_berhasil', 'berhasil');
 
+        $this->session->set_flashdata('rekomendasi', 'berhasil');
+
         // sementara history penjualan diperbaiki, jadi redirect kesini dulu
         redirect('transaksi');
     }
