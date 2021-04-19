@@ -31,6 +31,7 @@ class M_mining extends CI_Model
         return $this->db->query($sql)->num_row();
     }
 
+    // gadipake di laporan
     public function tambahTransaksi()
     {
         $post = $this->input->post();
@@ -43,6 +44,7 @@ class M_mining extends CI_Model
         $this->db->insert('transaksi', $data);
     }
 
+    // gadipake di laporan
     public function updateTransaksi($id)
     {
         $post = $this->input->post();
@@ -54,6 +56,7 @@ class M_mining extends CI_Model
         $this->db->update("transaksi");
     }
 
+    // gadipake di laporan
     public function deleteTransaksi($id)
     {
         return $this->db->delete("transaksi", array("id" => $id));
@@ -535,6 +538,7 @@ WHERE conf.id_process='$id_process'" . "AND conf.id_process=log.id " . "AND conf
         $this->db->insert('confidence', $data);
     }
 
+    // gamasuk laporan
     function hitung_confidence2($supp_xuy, $min_support, $min_confidence, $atribut1, $atribut2, $id_process, $dataTransaksi, $jumlah_transaksi, $j1, $j2, $j3, $j4)
     {
         //hitung nilai support seperti itemset1
