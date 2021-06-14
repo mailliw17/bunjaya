@@ -29,7 +29,7 @@ class historydatmin extends CI_Controller
 
         $this->session->set_flashdata('message_hapus', '<div class="alert alert-success" role="alert">
                 </div>');
-        redirect('historydatmin');
+        redirect('dashboard');
     }
 
     // public function detailknowledge()
